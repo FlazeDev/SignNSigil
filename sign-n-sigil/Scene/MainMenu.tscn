@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://cqeoyg6mv5iuk"]
+
+[ext_resource type="Texture2D" uid="uid://d3pf035hmcn84" path="res://Assets/KennyUI/PNG/Red/Default/button_square_flat.png" id="1_d4yab"]
+[ext_resource type="Script" uid="uid://bts6cuuv7hig2" path="res://Scene/MainMenu.gd" id="1_o3nbu"]
+[ext_resource type="Texture2D" uid="uid://bp02yb8ma30b4" path="res://Assets/KennyUI/Vector/Blue/icon_square.svg" id="2_o3nbu"]
+[ext_resource type="Texture2D" uid="uid://b1it0u2iypbjg" path="res://Assets/KennyUI/Vector/Extra/input_square.svg" id="3_v3p41"]
+[ext_resource type="FontFile" uid="uid://dmcbxp2oew58t" path="res://Assets/PixelifySans-Medium.ttf" id="4_6nqpc"]
+
+[node name="MainMenu" type="Control" unique_id=820159016]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o3nbu")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1620178920]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_d4yab")
+expand_mode = 1
+
+[node name="Play" type="TextureButton" parent="." unique_id=275633806]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.0
+offset_top = -96.0
+offset_right = 248.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_o3nbu")
+texture_pressed = ExtResource("3_v3p41")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Play" unique_id=964485095]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_6nqpc")
+theme_override_font_sizes/font_size = 92
+text = "PLAY"
+
+[node name="Label2" type="Label" parent="." unique_id=1512299340]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -485.0
+offset_top = 137.0
+offset_right = 481.0
+offset_bottom = 377.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_6nqpc")
+theme_override_font_sizes/font_size = 200
+text = "Sign N Sigil"
+
+[node name="Label3" type="Label" parent="." unique_id=1382738955]
+z_index = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -522.0
+offset_top = 139.0
+offset_right = 522.0
+offset_bottom = 399.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_6nqpc")
+theme_override_font_sizes/font_size = 216
+text = "Sign N Sigil"

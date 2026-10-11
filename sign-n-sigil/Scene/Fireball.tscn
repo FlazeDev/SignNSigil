@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dac5nvaihd37c"]
+
+[ext_resource type="Script" uid="uid://cjtloqdqydp1" path="res://Scripts/fireball.gd" id="1_et1m7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w24xc"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jqb5a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ilw52"]
+albedo_color = Color(1, 0.22352941, 0, 1)
+
+[node name="Fireball" type="Area3D" unique_id=1442502111]
+transform = Transform3D(3.17, 0, 0, 0, 3.17, 0, 0, 0, 3.17, 0, -0.76280034, 0)
+script = ExtResource("1_et1m7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1121658326]
+shape = SubResource("SphereShape3D_w24xc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=21659954]
+mesh = SubResource("SphereMesh_jqb5a")
+surface_material_override/0 = SubResource("StandardMaterial3D_ilw52")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1580236648]
+light_color = Color(0.8243385, 0.22291446, 0, 1)
+light_energy = 16.0
+omni_range = 5.398447

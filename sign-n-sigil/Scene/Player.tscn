@@ -1,0 +1,221 @@
+[gd_scene format=3 uid="uid://b1qaqkyj5di8h"]
+
+[ext_resource type="Script" uid="uid://c22wf2q28jbqc" path="res://Scripts/player.gd" id="1_jvxg0"]
+[ext_resource type="Script" uid="uid://ci4w5inpa6ewu" path="res://Scripts/CameraComponent.gd" id="2_fvocf"]
+[ext_resource type="Script" uid="uid://dihwwdg5q5y44" path="res://Scripts/InputComponent.gd" id="2_mud5u"]
+[ext_resource type="Script" uid="uid://bajkp1araggpd" path="res://Scripts/MovementComponent.gd" id="3_fvocf"]
+[ext_resource type="Script" uid="uid://c8oxyttegi5gr" path="res://Scripts/GrimoireComponent.gd" id="5_fvocf"]
+[ext_resource type="Script" uid="uid://6nkkigq74mjl" path="res://Scripts/HealthComponent.gd" id="6_pmp2f"]
+[ext_resource type="FontFile" uid="uid://dmcbxp2oew58t" path="res://Assets/PixelifySans-Medium.ttf" id="7_jriwm"]
+[ext_resource type="Texture2D" uid="uid://og06mhjmakqq" path="res://Assets/WhiteVictory.png" id="8_7dww1"]
+[ext_resource type="Texture2D" uid="uid://bmccy2v5pp6f7" path="res://Assets/WhiteThumbsUp.png" id="9_inyuv"]
+[ext_resource type="Texture2D" uid="uid://d1yh0j5shuig8" path="res://Assets/WhitePointUp.png" id="10_6q824"]
+[ext_resource type="Texture2D" uid="uid://c5ddmfqq23o54" path="res://Assets/WhiteClosedFist.png" id="11_c7h21"]
+[ext_resource type="Texture2D" uid="uid://b1it0u2iypbjg" path="res://Assets/KennyUI/Vector/Extra/input_square.svg" id="12_7dww1"]
+[ext_resource type="Texture2D" uid="uid://d37efoencrlon" path="res://Assets/KennyUI/Vector/Grey/icon_cross.svg" id="12_inyuv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j8lcb"]
+
+[node name="Player" type="CharacterBody3D" unique_id=574050053 groups=["Player"]]
+script = ExtResource("1_jvxg0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=6767728]
+shape = SubResource("CapsuleShape3D_j8lcb")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1236813875 node_paths=PackedStringArray("body")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+script = ExtResource("2_fvocf")
+body = NodePath("..")
+metadata/_custom_type_script = "uid://ci4w5inpa6ewu"
+
+[node name="SpawnPoint" type="Node3D" parent="Camera3D" unique_id=487673655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2232916)
+
+[node name="InputComponent" type="Node" parent="." unique_id=872691295]
+script = ExtResource("2_mud5u")
+metadata/_custom_type_script = "uid://dihwwdg5q5y44"
+
+[node name="MovementComponent" type="Node" parent="." unique_id=626136390]
+script = ExtResource("3_fvocf")
+metadata/_custom_type_script = "uid://bajkp1araggpd"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1379847018 node_paths=PackedStringArray("healthBar")]
+script = ExtResource("6_pmp2f")
+healthBar = NodePath("../UI/HealthBar")
+metadata/_custom_type_script = "uid://6nkkigq74mjl"
+
+[node name="GrimoireComponent" type="Node3D" parent="." unique_id=216223049 node_paths=PackedStringArray("slot_1", "slot_2", "slot_3", "slot_4", "camera_display", "spawnPoint")]
+script = ExtResource("5_fvocf")
+slot_1 = NodePath("../GrimoireLayer/CSpell/Slot1")
+slot_2 = NodePath("../GrimoireLayer/CSpell/Slot2")
+slot_3 = NodePath("../GrimoireLayer/CSpell/Slot3")
+slot_4 = NodePath("../GrimoireLayer/CSpell/Slot4")
+camera_display = NodePath("../GrimoireLayer/TextureRect")
+spawnPoint = NodePath("../Camera3D/SpawnPoint")
+metadata/_custom_type_script = "uid://c8oxyttegi5gr"
+
+[node name="GrimoireLayer" type="CanvasLayer" parent="." unique_id=1907027995]
+visible = false
+
+[node name="Spells" type="VBoxContainer" parent="GrimoireLayer" unique_id=240081782]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -475.0
+offset_top = -221.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="FireBall" type="HBoxContainer" parent="GrimoireLayer/Spells" unique_id=1164868861]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GrimoireLayer/Spells/FireBall" unique_id=1328279602]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_jriwm")
+theme_override_font_sizes/font_size = 39
+text = "FIREBALL"
+
+[node name="Victory" type="TextureRect" parent="GrimoireLayer/Spells/FireBall" unique_id=816116322]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("8_7dww1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ThumbsUp" type="TextureRect" parent="GrimoireLayer/Spells/FireBall" unique_id=279612469]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("9_inyuv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PointUp" type="TextureRect" parent="GrimoireLayer/Spells/FireBall" unique_id=1567500281]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("10_6q824")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClosedFist" type="TextureRect" parent="GrimoireLayer/Spells/FireBall" unique_id=937064406]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("11_c7h21")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Heal" type="HBoxContainer" parent="GrimoireLayer/Spells" unique_id=1297730545]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GrimoireLayer/Spells/Heal" unique_id=1839395563]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_jriwm")
+theme_override_font_sizes/font_size = 39
+text = "HEAL          "
+
+[node name="ThumbsUp" type="TextureRect" parent="GrimoireLayer/Spells/Heal" unique_id=1184231819]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("9_inyuv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClosedFist" type="TextureRect" parent="GrimoireLayer/Spells/Heal" unique_id=880571492]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("11_c7h21")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PointUp" type="TextureRect" parent="GrimoireLayer/Spells/Heal" unique_id=766856875]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("10_6q824")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Victory" type="TextureRect" parent="GrimoireLayer/Spells/Heal" unique_id=601774810]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("8_7dww1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CSpell" type="HBoxContainer" parent="GrimoireLayer" unique_id=1643571475]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -163.0
+offset_right = 473.0
+offset_bottom = -93.0
+grow_vertical = 0
+
+[node name="Slot1" type="TextureRect" parent="GrimoireLayer/CSpell" unique_id=491500367]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot2" type="TextureRect" parent="GrimoireLayer/CSpell" unique_id=1211347965]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot3" type="TextureRect" parent="GrimoireLayer/CSpell" unique_id=2051928850]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot4" type="TextureRect" parent="GrimoireLayer/CSpell" unique_id=2074140317]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="GrimoireLayer" unique_id=2070875059]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 567.0
+offset_top = 39.0
+offset_right = 1421.0
+offset_bottom = 519.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.47999936)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=913845910]
+
+[node name="HealthBar" type="ProgressBar" parent="UI" unique_id=1173312458]
+offset_right = 343.0
+offset_bottom = 70.0
+
+[node name="TextureRect" type="TextureRect" parent="UI" unique_id=2030638276]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_inyuv")
+
+[node name="LoadingScreen" type="CanvasLayer" parent="." unique_id=994232350]
+
+[node name="TextureRect" type="TextureRect" parent="LoadingScreen" unique_id=718448162]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_7dww1")

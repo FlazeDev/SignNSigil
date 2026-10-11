@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://q0xi5djn7dc7"]
+
+[ext_resource type="Script" uid="uid://bajkp1araggpd" path="res://Scripts/MovementComponent.gd" id="1_fbwx4"]
+[ext_resource type="Script" uid="uid://bnjbnd8xjcepa" path="res://Scripts/gnome.gd" id="1_snf7i"]
+[ext_resource type="Script" uid="uid://6nkkigq74mjl" path="res://Scripts/HealthComponent.gd" id="2_snf7i"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cocim"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1hkfp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vpixx"]
+albedo_color = Color(0.7764706, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dhqrx"]
+
+[node name="Gnome" type="CharacterBody3D" unique_id=1675640375]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("1_snf7i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=590537799]
+shape = SubResource("CapsuleShape3D_cocim")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1962046247]
+mesh = SubResource("CapsuleMesh_1hkfp")
+surface_material_override/0 = SubResource("StandardMaterial3D_vpixx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1025262071]
+transform = Transform3D(0.84288263, 0, 0, 0, 0.2814262, 0, 0, 0, 0.80694854, 0, 0.45392954, -0.21866447)
+mesh = SubResource("BoxMesh_dhqrx")
+
+[node name="MovementComponent" type="Node" parent="." unique_id=1599180349]
+script = ExtResource("1_fbwx4")
+speed = 3.0
+metadata/_custom_type_script = "uid://bajkp1araggpd"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1532449055]
+script = ExtResource("2_snf7i")
+metadata/_custom_type_script = "uid://6nkkigq74mjl"
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=153794886]
+
+[node name="wTimer" type="Timer" parent="." unique_id=779614929]
+wait_time = 5.0
+one_shot = true
+autostart = true

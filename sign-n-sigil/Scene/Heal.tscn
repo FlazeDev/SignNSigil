@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dhurbi1xxcajw"]
+
+[ext_resource type="Script" uid="uid://bn1kxe36xyjqc" path="res://Scripts/heal.gd" id="1_3twix"]
+
+[node name="Heal" type="Node3D" unique_id=531698206]
+script = ExtResource("1_3twix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1711400130]
